@@ -1,0 +1,11 @@
+[project]
+name = "search-vectors"
+version = "0.1.0"
+description = "OpenFaas function to allow search of vectors in LanceDB"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "flask>=3.0.3",
+    "tox==3.*",
+    "waitress>=3.0.0",
+]
