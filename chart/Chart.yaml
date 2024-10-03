@@ -12,6 +12,11 @@ description: A Helm chart to create a private vector database
 # pipeline. Library charts do not define any templates and therefore cannot be deployed.
 type: application
 
+dependencies:
+    - name: openfaas
+      version: "14.2.77"
+      repository: "https://openfaas.github.io/faas-netes"
+
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
