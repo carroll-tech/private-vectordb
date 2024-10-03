@@ -2,5 +2,8 @@ dependencies:
 - name: openfaas
   repository: https://openfaas.github.io/faas-netes
   version: 14.2.77
-digest: sha256:384ea3cb79f156c3336f8756d680ccf2149fdf3ad28a9274f25dcf5478d521c1
-generated: "2024-10-03T11:05:41.584959-04:00"
+- name: minio
+  repository: https://charts.bitnami.com/bitnami
+  version: 14.7.15
+digest: sha256:f64f1e2878237655dacd61fd9465b86d83ccf61d5a4123cd8ba23ce8d1e07fc4
+generated: "2024-10-03T11:08:31.891274-04:00"
