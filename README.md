@@ -14,9 +14,10 @@ An internet connection will be required to download the images from GitHub Conta
 The project has been tested on both x86 and ARM machines.
 
 ### Prerequisites
-1. A working kubernetes cluster. If you are unfamiliar with kubernetes or helm, you should start by trying to run a cluster locally using [MicroK8s](https://microk8s.io).
-2. Operator Lifecycle Manager installed on cluster. Installation [instructions here](https://sdk.operatorframework.io/docs/cli/operator-sdk_olm_install/)
-3. Knative Operator installed on cluster. Installation [instructions here](https://artifacthub.io/packages/olm/community-operators/knative-operator?modal=install)
+- A Kubernetes cluster
+- Operator Lifecycle Manager installed on cluster. Installation [instructions here](https://sdk.operatorframework.io/docs/cli/operator-sdk_olm_install/)
+- Knative Operator installed on cluster. Installation [instructions here](https://artifacthub.io/packages/olm/community-operators/knative-operator?modal=install)
+- Rook Ceph Operator installed on cluster. Installation [instructions here](https://github.com/rook/rook/blob/master/Documentation/Helm-Charts/operator-chart.md)
 
 ### Steps
 
