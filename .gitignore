@@ -34,4 +34,7 @@ Session.vim
 # Chart dependencies
 **/charts/*.tgz
 
+# Chart builds
+chart/**/*.tgz
+
 .history
