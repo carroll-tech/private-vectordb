@@ -17,7 +17,7 @@ The project has been tested on both x86 and ARM machines.
 - A Kubernetes cluster
 - Operator Lifecycle Manager installed on cluster. Installation [instructions here](https://sdk.operatorframework.io/docs/cli/operator-sdk_olm_install/)
 - Knative Operator installed on cluster. Installation [instructions here](https://artifacthub.io/packages/olm/community-operators/knative-operator?modal=install)
-- Rook Ceph Operator installed on cluster. Installation [instructions here](https://artifacthub.io/packages/olm/community-operators/rook-ceph?modal=install)
+- Rook Ceph Operator installed on cluster. Installation [instructions here](https://artifacthub.io/packages/olm/community-operators/rook-ceph?modal=install) *NOTE*: you should put the operator in the `operators` namespace, not a new `rook-ceph` namespace. This keeps consistency with other installed operators.
 
 ### Steps
 
