@@ -17,7 +17,7 @@ The project has been tested on both x86 and ARM machines.
 - A Kubernetes cluster
 - Operator Lifecycle Manager installed on cluster. Installation [instructions here](https://sdk.operatorframework.io/docs/cli/operator-sdk_olm_install/)
 - Knative Operator installed on cluster. Installation [instructions here](https://artifacthub.io/packages/olm/community-operators/knative-operator?modal=install)
-- Rook Ceph Operator installed on cluster. Installation [instructions here](https://github.com/rook/rook/blob/master/Documentation/Helm-Charts/operator-chart.md)
+- Rook Ceph Operator installed on cluster. Installation [instructions here](https://artifacthub.io/packages/olm/community-operators/rook-ceph?modal=install)
 
 ### Steps
 
