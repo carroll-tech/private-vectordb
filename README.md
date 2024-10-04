@@ -19,6 +19,12 @@ The project has been tested on both x86 and ARM machines.
 - Knative Operator installed on cluster. Installation [instructions here](https://artifacthub.io/packages/olm/community-operators/knative-operator?modal=install)
 - Rook Ceph Operator installed on cluster. Installation [instructions here](https://artifacthub.io/packages/olm/community-operators/rook-ceph?modal=install) *NOTE*: you should put the operator in the `operators` namespace, not a new `rook-ceph` namespace. This keeps consistency with other installed operators.
 
+Prerequisites can be installed and configured by running the included script:
+```bash
+chmod +x install-prerequisites.sh
+./install-prerequisites.sh
+```
+
 ### Steps
 
 
