@@ -1,6 +1,6 @@
 dependencies:
-- name: minio
-  repository: https://charts.bitnami.com/bitnami
-  version: 14.7.15
-digest: sha256:5933c8f888d6033a6197f627881feed83743ece5f157c891de345a1d6678a0cc
-generated: "2024-10-04T08:47:11.514626-06:00"
+- name: rook-ceph-cluster
+  repository: https://charts.rook.io/release
+  version: v1.15.3
+digest: sha256:697a7c091a0339d7b75ad2868eebeb04fb3b708ff0e1dd0a78dc9accb3b7c9bd
+generated: "2024-10-04T09:42:22.118635-06:00"

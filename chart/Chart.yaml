@@ -13,9 +13,9 @@ description: A Helm chart to create a private vector database
 type: application
 
 dependencies:
-    - name: minio
-      version: "14.7.15"
-      repository: "https://charts.bitnami.com/bitnami"
+    - name: rook-ceph-cluster
+      version: "1.15.3"
+      repository: "https://charts.rook.io/release"
 
 
 # This is the chart version. This version number should be incremented each time you make changes

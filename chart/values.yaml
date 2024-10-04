@@ -82,11 +82,11 @@ tolerations: []
 affinity: {}
 
 ##############################################################################################
-# Minio configuration
-# Documentation: https://artifacthub.io/packages/helm/bitnami/minio
+# Rook Ceph configuration
+# Documentation: https://github.com/rook/rook/blob/master/Documentation/Helm-Charts/ceph-cluster-chart.md
 ##############################################################################################
-minio:
-  auth:
-    rootUser: "dev"
-    rootPassword: "dev"
+rook-ceph-cluster:
+
+  # Namespace where the rook ceph operator is installed
+  operatorNamespace: "operators"
   
