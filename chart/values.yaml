@@ -86,6 +86,8 @@ affinity: {}
 # Documentation: https://github.com/rook/rook/blob/master/Documentation/Helm-Charts/ceph-cluster-chart.md
 ##############################################################################################
 rook-ceph-cluster:
+  # Name of the storage cluster
+  clusterName: "vector-storage"
 
   # Namespace where the rook ceph operator is installed
   operatorNamespace: "operators"
