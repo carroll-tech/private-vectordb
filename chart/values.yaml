@@ -2,6 +2,43 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# Variables for the CephCluster resource which acts as storage
+storage:
+  skipUpgradeChecks: false
+  continueUpgradeAfterChecksEvenIfNotHealthy: false
+
+  # Ceph monitor settings
+  mon:
+    count: 3
+    allowMultiplePerNode: false
+    storageClassName: standard-rwo
+    driveSize: 10Gi
+
+  # Ceph manager settings
+  mgr:
+    count: 2
+    allowMultiplePerNode: false
+
+  # Ceph dashboard settings
+  dashboard:
+    enabled: true
+    ssl: false
+
+  deviceSets:
+    - name: set1
+      count: 3
+      portable: true
+      tuneDeviceClass: true
+      tuneFastDeviceClass: false
+      volumeClaimTemplate:
+        name: data
+        storageClassName: standard-rwo
+        driveSize: 10Gi
+        volumeMode: Block
+        accessMode: ReadWriteOnce
+    # - name: set2
+    #   count: 5
+
 replicaCount: 1
 
 image:
@@ -25,10 +62,12 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -43,7 +82,8 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -56,7 +96,8 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -91,4 +132,9 @@ rook-ceph-cluster:
 
   # Namespace where the rook ceph operator is installed
   operatorNamespace: "operators"
-  
+
+  cephClusterSpec:
+    mon:
+      allowMultiplePerNode: true
+    mgr:
+      allowMultiplePerNode: true
