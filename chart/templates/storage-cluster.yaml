@@ -17,10 +17,10 @@ spec:
   mon:
     # Set the number of mons to be started. Generally recommended to be 3.
     # For highest availability, an odd number of mons should be specified.
-    count: {{ .Values.storage.mon.count }}
+    count: {{ .Values.storage.mon.count | default 3 }}
     # The mons should be on unique nodes. For production, at least 3 nodes are recommended for this reason.
     # Mons should only be allowed on the same node for test environments where data loss is acceptable.
-    allowMultiplePerNode: {{ .Values.storage.mon.allowMultiplePerNode }}
+    allowMultiplePerNode: {{ .Values.storage.mon.allowMultiplePerNode | default false }}
     # A volume claim template can be specified in which case new monitors (and
     # monitors created during fail over) will construct a PVC based on the
     # template for the monitor's primary storage. Changes to the template do not
@@ -29,24 +29,24 @@ spec:
     # size appropriate for monitor data will be used.
     volumeClaimTemplate:
       spec:
-        storageClassName: {{ .Values.storage.mon.storageClassName | default "default" }}
+        storageClassName: {{ default "default" .Values.global.storageClassName .Values.storage.mon.storageClassName }}
         resources:
           requests:
-            storage: {{ .Values.storage.mon.driveSize }}
+            storage: {{ .Values.storage.mon.driveSize | default "10Gi" }}
   cephVersion:
     image: quay.io/ceph/ceph:v18.2.4
     allowUnsupported: false
-  skipUpgradeChecks: {{ .Values.storage.skipUpgradeChecks }}
-  continueUpgradeAfterChecksEvenIfNotHealthy: {{ .Values.storage.continueUpgradeAfterChecksEvenIfNotHealthy }}
+  skipUpgradeChecks: {{ .Values.storage.skipUpgradeChecks | default false }}
+  continueUpgradeAfterChecksEvenIfNotHealthy: {{ .Values.storage.continueUpgradeAfterChecksEvenIfNotHealthy | default false }}
   mgr:
-    count: {{ .Values.storage.mgr.count }}
-    allowMultiplePerNode: {{ .Values.storage.mgr.allowMultiplePerNode }}
+    count: {{ .Values.storage.mgr.count | default 2 }}
+    allowMultiplePerNode: {{ .Values.storage.mgr.allowMultiplePerNode | default false }}
     modules:
       - name: rook
         enabled: true
   dashboard:
-    enabled: {{ .Values.storage.dashboard.enabled }}
-    ssl: {{ .Values.storage.dashboard.ssl }}
+    enabled: {{ .Values.storage.dashboard.enabled | default false }}
+    ssl: {{ .Values.storage.dashboard.ssl | default false }}
   crashCollector:
     disable: false
   logCollector:
@@ -135,7 +135,7 @@ spec:
                 requests:
                   storage: {{ .volumeClaimTemplate.driveSize | default "10Gi" }}
               # IMPORTANT: Change the storage class depending on your environment
-              storageClassName: {{ .volumeClaimTemplate.storageClassName | default "default" }}
+              storageClassName: {{ default "default" $.Values.global.storageClassName .volumeClaimTemplate.storageClassName }}
               volumeMode: {{ .volumeClaimTemplate.volumeMode | default "Block" }}
               accessModes:
                 - {{ .volumeClaimTemplate.accessMode | default "ReadWriteOnce" }}
