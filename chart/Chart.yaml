@@ -12,12 +12,6 @@ description: A Helm chart to create a private vector database
 # pipeline. Library charts do not define any templates and therefore cannot be deployed.
 type: application
 
-dependencies:
-    - name: rook-ceph-cluster
-      version: "1.15.3"
-      repository: "https://charts.rook.io/release"
-
-
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
