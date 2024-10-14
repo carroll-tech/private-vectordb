@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   metadata:
   name: {{ include "chart.fullname" . }}-storage-toolbox
+  namespace: {{ .Release.Namespace }} # namespace:cluster
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 spec:

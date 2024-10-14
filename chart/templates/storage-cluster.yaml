@@ -10,6 +10,7 @@ apiVersion: ceph.rook.io/v1
 kind: CephCluster
 metadata:
   name: {{ include "chart.fullname" . }}-storage
+  namespace: {{ .Release.Namespace }} # namespace:cluster
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 spec:
