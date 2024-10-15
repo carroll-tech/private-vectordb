@@ -25,6 +25,7 @@ jobs:
                     search-vectors-container:
                         - 'containers/search-vectors/**'
 
+    # Chart jobs
     bump-chart-version:
         uses: ./.github/workflows/bump-chart-version.yaml
         needs: [filter-changes]
@@ -34,14 +35,12 @@ jobs:
             pull-requests: write      # 'write' access to pull requests
         with:
             chart-path: charts/private-vectordb
-    process-private-vectordb-chart-changes:
-        runs-on: ubuntu-latest
+    lint-test-charts:
+        uses: ./.github/workflows/lint-test-charts.yaml
         needs: [bump-chart-version]
-        steps:
-            - name: hello-step
-              run: echo "private-vectordb-chart changed and version incremented!"
     
-    process-populate-example-data-container-changes:
+    # Populate data container jobs
+    build-populate-example-data-container:
         runs-on: ubuntu-latest
         needs: [filter-changes]
         if: ${{ needs.filter-changes.outputs.populate-example-data-container-changed == 'true' }}
@@ -49,7 +48,8 @@ jobs:
             - name: hello-step
               run: echo "populate-example-data-container changed!"
 
-    process-search-vectors-container-changes:
+    # Search vectors container jobs
+    build-search-vectors-container:
         runs-on: ubuntu-latest
         needs: [filter-changes]
         if: ${{ needs.filter-changes.outputs.search-vectors-container-changed == 'true' }}
