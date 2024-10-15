@@ -1,0 +1,25 @@
+name: Bump Chart Version
+
+on: 
+    workflow_call:
+        inputs:
+            path:
+                required: true
+                type: string
+
+  
+jobs:
+    version:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        steps:
+        - name: Conventional Changelog Action
+          uses: TriPSs/conventional-changelog-action@v5
+          with:
+            github-token: ${{ secrets.github_token }}
+            git-message: 'chore(release): {version}'
+            version-file: '${{ github.event.inputs.path }}/Chart.yaml'
+            skip-on-empty: 'false'
+            tag-prefix: ""
+            create-summary: true
