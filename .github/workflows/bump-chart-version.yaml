@@ -52,8 +52,6 @@ jobs:
             skip-git-pull: true
             git-push: false
         - name: Push Changes
-          uses: ad-m/github-push-action@master
-          with:
-            force_with_lease: true
-            branch: ${{ github.head_ref }}
+          run: |
+            git push --force
         
