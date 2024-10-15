@@ -53,5 +53,5 @@ jobs:
             git-push: false
         - name: Push Changes
           run: |
-            git push --force
+            git push origin HEAD:${{ github.head_ref }} --force
         
