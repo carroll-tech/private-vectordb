@@ -13,6 +13,7 @@ jobs:
             populate-example-data-container-changed: ${{ steps.changes.outputs.populate-example-data-container }}
             search-vectors-container-changed: ${{ steps.changes.outputs.search-vectors-container }}
         steps:
+            - uses: actions/checkout@v4
             - uses: dorny/paths-filter@v3
               id: changes
               with:
