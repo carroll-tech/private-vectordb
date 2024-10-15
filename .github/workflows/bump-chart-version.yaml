@@ -24,7 +24,7 @@ jobs:
           uses: TriPSs/conventional-changelog-action@v5
           with:
             github-token: ${{ secrets.github_token }}
-            git-message: 'chore(release): {version}'
+            git-message: 'chore(release): chart: {version}'
             version-file: '${{ inputs.chart-path }}/Chart.yaml'
             input-file: '${{ inputs.chart-path }}/CHANGELOG.md'
             skip-on-empty: 'false'
