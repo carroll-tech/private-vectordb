@@ -20,7 +20,10 @@ jobs:
           with:
             fetch-depth: 0
         - name: Fetch main Branch
-          run: git fetch origin main:main
+          run: |
+            git config --global user.email "conventional.changelog.action@github.com"
+            git config --global user.name "Conventional Changelog Action"
+            git fetch origin main:main
         - name: Get Previous Version Hash
           id: get_hash
           run: |
