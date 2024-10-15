@@ -12,9 +12,14 @@ jobs:
     version:
         runs-on: ubuntu-latest
         permissions:
-            contents: write
+            contents: write           # 'write' access to repository contents
+            pull-requests: write      # 'write' access to pull requests
         steps:
-        - uses: actions/checkout@v4
+        - name: Pull Repository
+          uses: actions/checkout@v4
+          with:
+            ref: ${{ github.head_ref }}
+            fetch-depth: 0
         - name: Conventional Changelog Action
           uses: TriPSs/conventional-changelog-action@v5
           with:
@@ -26,3 +31,9 @@ jobs:
             tag-prefix: ''
             create-summary: true
             skip-git-pull: true
+            git-push: false
+        - name: Push Changes
+          uses: ad-m/github-push-action@master
+          with:
+            branch: ${{ github.head_ref }}
+        

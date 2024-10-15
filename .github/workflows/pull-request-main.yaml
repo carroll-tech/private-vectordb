@@ -30,7 +30,8 @@ jobs:
         needs: [filter-changes]
         if: ${{ needs.filter-changes.outputs.private-vectordb-chart-changed == 'true' }}
         permissions:
-            contents: write
+            contents: write           # 'write' access to repository contents
+            pull-requests: write      # 'write' access to pull requests
         with:
             chart-path: charts/private-vectordb
     process-private-vectordb-chart-changes:
