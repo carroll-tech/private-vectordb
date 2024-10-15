@@ -20,6 +20,17 @@ jobs:
           with:
             ref: ${{ github.head_ref }}
             fetch-depth: 0
+        - name: Get Previous Version Hash
+          id: get_hash
+          run: |
+            COMMIT_HASH=$(git cherry -v main ${{ github.head_ref || github.ref_name }} | grep "chore(release): chart:" | head -n 1 | awk '{print $2}')
+            echo "::set-output name=hash::$COMMIT_HASH"
+        - name: Remove Previous Version Hash
+          if: ${{ steps.get_hash.outputs.hash != '' }}
+          run: |
+            COMMIT_HASH=${{ steps.get_hash.outputs.hash }}
+            git rebase --onto $COMMIT_HASH^ $COMMIT_HASH
+
         - name: Conventional Changelog Action
           uses: TriPSs/conventional-changelog-action@v5
           with:
