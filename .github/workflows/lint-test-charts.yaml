@@ -13,7 +13,7 @@ jobs:
       
       - name: Pull New Changes
         run: |
-          git fetch && git pull
+          git fetch && git pull origin HEAD:${{ github.head_ref }}
 
       - name: Set up Helm
         uses: azure/setup-helm@v4.2.0
