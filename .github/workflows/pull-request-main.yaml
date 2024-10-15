@@ -29,6 +29,8 @@ jobs:
         uses: ./.github/workflows/bump-chart-version.yaml
         needs: [filter-changes]
         if: ${{ needs.filter-changes.outputs.private-vectordb-chart-changed == 'true' }}
+        permissions:
+            contents: write
         with:
             path: charts/private-vectordb
     process-private-vectordb-chart-changes:
