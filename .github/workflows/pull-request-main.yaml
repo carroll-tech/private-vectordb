@@ -25,13 +25,18 @@ jobs:
                     search-vectors-container:
                         - 'containers/search-vectors/**'
 
-    process-private-vectordb-chart-changes:
-        runs-on: ubuntu-latest
+    bump-chart-version:
+        uses: carroll-tech/carroll-tech/private-vectordb/.github/workflows/bump-chart-version.yaml@ci
         needs: [filter-changes]
         if: ${{ needs.filter-changes.outputs.private-vectordb-chart-changed == 'true' }}
+        with:
+            path: charts/private-vectordb
+    process-private-vectordb-chart-changes:
+        runs-on: ubuntu-latest
+        needs: [bump-chart-version]
         steps:
             - name: hello-step
-              run: echo "private-vectordb-chart changed!"
+              run: echo "private-vectordb-chart changed and version incremented!"
     
     process-populate-example-data-container-changes:
         runs-on: ubuntu-latest
