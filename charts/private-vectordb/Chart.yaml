@@ -3,9 +3,9 @@ name: private-vectordb
 description: A Helm chart to create a private vector database
 
 maintainers:
-  - name: Jack Carroll
+  - name: jolfr
     email: thomas.jack.carroll@carrolltech.llc
-    url: carrolltech.llc
+    url: https://carrolltech.llc
 
 type: application
 
