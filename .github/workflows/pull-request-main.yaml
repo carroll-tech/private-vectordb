@@ -32,7 +32,7 @@ jobs:
         permissions:
             contents: write
         with:
-            path: charts/private-vectordb
+            chart-path: charts/private-vectordb
     process-private-vectordb-chart-changes:
         runs-on: ubuntu-latest
         needs: [bump-chart-version]
