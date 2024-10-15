@@ -6,8 +6,44 @@ on:
 
   
 jobs:
-    my-job:
+    filter-changes:
         runs-on: ubuntu-latest
+        outputs:
+            private-vectordb-chart-changed: ${{ steps.changes.outputs.private-vectordb-chart }}
+            populate-example-data-container-changed: ${{ steps.changes.outputs.populate-example-data-container }}
+            search-vectors-container-changed: ${{ steps.changes.outputs.search-vectors-container }}
         steps:
-        - name: my-step
-          run: echo "Hello World!"
+            - uses: dorny/paths-filter@v3
+              id: changes
+              with:
+                filters: |
+                    private-vectordb-chart:
+                        - 'charts/private-vectordb/**'
+                    populate-example-data-container:
+                        - 'containers/populate-example-data/**'
+                    search-vectors-container:
+                        - 'containers/search-vectors/**'
+
+    process-private-vectordb-chart-changes:
+        runs-on: ubuntu-latest
+        needs: [filter-changes]
+        if: ${{ needs.filter-changes.outputs.private-vectordb-chart-changed }} == 'true'
+        steps:
+            - name: hello-step
+              run: echo "private-vectordb-chart changed!"
+    
+    process-populate-example-data-container-changes:
+        runs-on: ubuntu-latest
+        needs: [filter-changes]
+        if: ${{ needs.filter-changes.outputs.populate-example-data-container-changed }} == 'true'
+        steps:
+            - name: hello-step
+              run: echo "populate-example-data-container changed!"
+
+    process-search-vectors-container-changes:
+        runs-on: ubuntu-latest
+        needs: [filter-changes]
+        if: ${{ needs.filter-changes.outputs.search-vectors-container-changed }} == 'true'
+        steps:
+            - name: hello-step
+              run: echo "search-vectors-container changed!"
