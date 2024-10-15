@@ -1,0 +1,62 @@
+# 0.2.0 (2024-10-15)
+
+
+### Bug Fixes
+
+* **chart:** added maintainers to chart ([d7c98c8](https://github.com/carroll-tech/private-vectordb/commit/d7c98c85007c067081e0ced26aa89bdc670b9d97))
+* **ci:** added checkout to first job ([b5ecf91](https://github.com/carroll-tech/private-vectordb/commit/b5ecf91f938016e6e01cc2ab42fd0786e39c7605))
+* **ci:** added command to delete the tag as well as the hash info ([6a2b782](https://github.com/carroll-tech/private-vectordb/commit/6a2b7828c21d679bc92ed0e0e63623da458b4253))
+* **ci:** adding always flag to final check job ([e269223](https://github.com/carroll-tech/private-vectordb/commit/e269223d93ba94b2e8e9db4635bb9966ec4f2b6e))
+* **ci:** adding fetch of latest version commit ([0f2bd50](https://github.com/carroll-tech/private-vectordb/commit/0f2bd503d399fd39caa3c7ba205e0e26f1badb8f))
+* **ci:** adding force push ([167b46a](https://github.com/carroll-tech/private-vectordb/commit/167b46a08d4b6590173c7dc4dc1d374e920eb8f9))
+* **ci:** adding git config set for removal of commit ([585db13](https://github.com/carroll-tech/private-vectordb/commit/585db1341be60301e7ea02ee5d14db3ddec5636b))
+* **ci:** adding head ref to pull ([a2b8649](https://github.com/carroll-tech/private-vectordb/commit/a2b864953fd2a438160e9121bcb6f7d0da408590))
+* **ci:** adding operator install to kind cluster ([acd9163](https://github.com/carroll-tech/private-vectordb/commit/acd916304530d36e3f3d7727824c1b8dbc2d37e0))
+* **ci:** adding proper permissions for nested workflow ([843849f](https://github.com/carroll-tech/private-vectordb/commit/843849ff158e91859352f082b41960110f779372))
+* **ci:** adding separate step for push ([b1101ea](https://github.com/carroll-tech/private-vectordb/commit/b1101ea658d66f8701097b20d08ac8cdedd80e95))
+* **ci:** changed to only allow lint and test workflow to be called by another workflow ([10d7fcb](https://github.com/carroll-tech/private-vectordb/commit/10d7fcb5140c1a069e7cd800cb1f4429546c300e))
+* **ci:** defaulting to manual pull of repo ([5e3c7ac](https://github.com/carroll-tech/private-vectordb/commit/5e3c7ac60fc137fc04a5dfcbbfcbcd2689f91758))
+* **ci:** ensuring version tags are pushed ([ee80f83](https://github.com/carroll-tech/private-vectordb/commit/ee80f83ec870c3de8626f2e85d568d871e2bb1d9))
+* **ci:** fixing chart testing helm commands ([#3](https://github.com/carroll-tech/private-vectordb/issues/3)) ([3947cf4](https://github.com/carroll-tech/private-vectordb/commit/3947cf4b3f1122d63584a30afc6b0e275e197c75))
+* **ci:** fixing linting for chart ([3d81f29](https://github.com/carroll-tech/private-vectordb/commit/3d81f2995e7961df782ac0349e83b63789d91c95))
+* **ci:** fixing linting for chart ([2156fdc](https://github.com/carroll-tech/private-vectordb/commit/2156fdca343144ac66e30eb551db2d953c25baf7))
+* **ci:** fixing linting for chart ([c8b5424](https://github.com/carroll-tech/private-vectordb/commit/c8b5424a5e6bdb024c145180cdab6a1a66178e9a))
+* **ci:** fixing path to reusable workflow ([9a2f743](https://github.com/carroll-tech/private-vectordb/commit/9a2f743bb4faa753c144285644497cb6fe8576ad))
+* **ci:** fixing rebase conflicts ([97b44c1](https://github.com/carroll-tech/private-vectordb/commit/97b44c11d773ccb7056ef44b361d63ecf96bc6db))
+* **ci:** proper path to changelog file ([2b645dc](https://github.com/carroll-tech/private-vectordb/commit/2b645dc8b59a714f5a5e056c4a82eb25bbcde269))
+* **ci:** removed chart testing install ([de91c34](https://github.com/carroll-tech/private-vectordb/commit/de91c34119dcff196565e7e4836ba3a6e837e581))
+* **ci:** setting kind cluster to proper context ([65c652c](https://github.com/carroll-tech/private-vectordb/commit/65c652c10ce039c5e85a1cc27500d48746d585f0))
+* **ci:** trying to fix conditionals ([dded07a](https://github.com/carroll-tech/private-vectordb/commit/dded07a8de2a36939a0ee5ab5c0377959fc42225))
+* **ci:** trying to fix final check ([c283d5f](https://github.com/carroll-tech/private-vectordb/commit/c283d5ff171b9dda59e50bfaac5672dd350c26aa))
+* **ci:** trying to fix force push ([5d15c26](https://github.com/carroll-tech/private-vectordb/commit/5d15c26250870e4539068554f4279a6e35f293b2))
+* **ci:** trying to fix force push ([eed49eb](https://github.com/carroll-tech/private-vectordb/commit/eed49eb99d1eed5346b08bbce1f91fa2c34d5df7))
+* **ci:** trying to fix force push ([8ea11af](https://github.com/carroll-tech/private-vectordb/commit/8ea11afde19f252b0af275e4f8efeab1cc895ce3))
+* **ci:** trying to fix force push ([fb493c0](https://github.com/carroll-tech/private-vectordb/commit/fb493c0905f19658ee1c5ae85f328dc6c968bed1))
+* **ci:** trying to fix git cherry command ([706ed78](https://github.com/carroll-tech/private-vectordb/commit/706ed782c97150c051709085141ffabdf803f51c))
+* **ci:** trying to fix git cherry command ([022b83f](https://github.com/carroll-tech/private-vectordb/commit/022b83f75a458f3f644e9cb56f2c67348530f9c9))
+* **ci:** trying to fix git cherry command ([29c7eb8](https://github.com/carroll-tech/private-vectordb/commit/29c7eb8e8f588ed421d5678ec99bcbc8b5621286))
+* **ci:** trying to fix git cherry command ([e2b5dc7](https://github.com/carroll-tech/private-vectordb/commit/e2b5dc78a2dd91aaaf9abf81240d1c27a9972c93))
+* **ci:** trying to get to proper chart.yaml location ([6dc9cae](https://github.com/carroll-tech/private-vectordb/commit/6dc9cae4560bf6952f1ce84562d5fe8424ea1777))
+* **ci:** updated commit message ([1ea4bda](https://github.com/carroll-tech/private-vectordb/commit/1ea4bdac2b94aa5c8f8e8213e4d58272cbd75748))
+* **ci:** updating branch name ([5f112c5](https://github.com/carroll-tech/private-vectordb/commit/5f112c5ee4573f88a0afbca70d2100de83a0fd34))
+
+
+### Features
+
+* **chart:** added minio to chart deps ([f53f829](https://github.com/carroll-tech/private-vectordb/commit/f53f82998ebfc89ccc8aaa8d150be8c2105495a3))
+* **chart:** added openfaas to chart deps ([03c7c4f](https://github.com/carroll-tech/private-vectordb/commit/03c7c4f5063d7e05863eeaea9c461969ccb541fd))
+* **chart:** added rook ceph cluster to dependencies ([8715249](https://github.com/carroll-tech/private-vectordb/commit/87152492a860f09301d17c396dca7ef013a215c8))
+* **chart:** added stub file for populate data job ([2f4710e](https://github.com/carroll-tech/private-vectordb/commit/2f4710e5f26ff9b686a59738e3efd62eea78c1a8))
+* **chart:** Ceph storage config ([#1](https://github.com/carroll-tech/private-vectordb/issues/1)) ([29aa946](https://github.com/carroll-tech/private-vectordb/commit/29aa946fcb4e6f39a1918d946f7f79b427651e58))
+* **chart:** removed openfaas from chart dependencies ([82ee9b9](https://github.com/carroll-tech/private-vectordb/commit/82ee9b9875846e0eba4f4063569b5bc95d96acd9))
+* **ci:** added bump chart version workflow ([d1506c0](https://github.com/carroll-tech/private-vectordb/commit/d1506c0e3ecec72591b52ffd24d7c2ab32a65e98))
+* **ci:** added conditional step to remove the previously generated release ([1b8b8ea](https://github.com/carroll-tech/private-vectordb/commit/1b8b8ea560f57d33d8d0c5213f420c1bd0798750))
+* **ci:** added conditional workflow for each subcomponent ([c177abc](https://github.com/carroll-tech/private-vectordb/commit/c177abcb7089b434492694931999c0f260d9b1e8))
+* **ci:** added final check for success of workflow ([3a7a029](https://github.com/carroll-tech/private-vectordb/commit/3a7a0296d347ec87b6545d804030a876b080581b))
+* **ci:** added lint and test workflow to main ([dc0343e](https://github.com/carroll-tech/private-vectordb/commit/dc0343ef9a495ee956a8e92353164c9d9ec8f1e5))
+* **ci:** added lint workflow ([#2](https://github.com/carroll-tech/private-vectordb/issues/2)) ([e80ecec](https://github.com/carroll-tech/private-vectordb/commit/e80ececf17590c644747ed7ac83e8ea9e32fc847))
+* **ci:** added stub workflow for pr to main ([f4a00c4](https://github.com/carroll-tech/private-vectordb/commit/f4a00c452b97876774d3f6e340de307c351ad71c))
+* **ci:** calling reusable workflow ([0dc11c0](https://github.com/carroll-tech/private-vectordb/commit/0dc11c0e1b531d45c5fc499f576fdb73c9d1f976))
+
+
+
