@@ -2,7 +2,7 @@ name: Pull Request to Main
 on:
     pull_request:
         types: [opened, reopened, synchronize]
-        branches: github.event.repository.default_branch
+        branches: main
 
   
 jobs:
