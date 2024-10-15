@@ -14,6 +14,7 @@ jobs:
         permissions:
             contents: write
         steps:
+        - uses: actions/checkout@v4
         - name: Conventional Changelog Action
           uses: TriPSs/conventional-changelog-action@v5
           with:
@@ -21,5 +22,6 @@ jobs:
             git-message: 'chore(release): {version}'
             version-file: '${{ github.event.inputs.path }}/Chart.yaml'
             skip-on-empty: 'false'
-            tag-prefix: ""
+            tag-prefix: ''
             create-summary: true
+            skip-git-pull: true
