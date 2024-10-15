@@ -26,7 +26,7 @@ jobs:
                         - 'containers/search-vectors/**'
 
     bump-chart-version:
-        uses: carroll-tech/carroll-tech/private-vectordb/.github/workflows/bump-chart-version.yaml@ci
+        uses: ./.github/workflows/bump-chart-version.yaml@ci
         needs: [filter-changes]
         if: ${{ needs.filter-changes.outputs.private-vectordb-chart-changed == 'true' }}
         with:
