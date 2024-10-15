@@ -73,5 +73,5 @@ jobs:
                 echo "One or more jobs have failed."
                 exit 1
             else
-                echo "All jobs succeeded or were skipped."
+                echo "All jobs succeeded or were skipped. Check success!"
             fi
