@@ -1,0 +1,58 @@
+name: Pull Request to Main
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+        branches: main
+
+  
+jobs:
+    filter-changes:
+        runs-on: ubuntu-latest
+        outputs:
+            private-vectordb-chart-changed: ${{ steps.changes.outputs.private-vectordb-chart }}
+            populate-example-data-container-changed: ${{ steps.changes.outputs.populate-example-data-container }}
+            search-vectors-container-changed: ${{ steps.changes.outputs.search-vectors-container }}
+        steps:
+            - uses: actions/checkout@v4
+            - uses: dorny/paths-filter@v3
+              id: changes
+              with:
+                filters: |
+                    private-vectordb-chart:
+                        - 'charts/private-vectordb/**'
+                    populate-example-data-container:
+                        - 'containers/populate-example-data/**'
+                    search-vectors-container:
+                        - 'containers/search-vectors/**'
+
+    # Chart jobs
+    bump-chart-version:
+        uses: ./.github/workflows/bump-chart-version.yaml
+        needs: [filter-changes]
+        if: ${{ needs.filter-changes.outputs.private-vectordb-chart-changed == 'true' }}
+        permissions:
+            contents: write           # 'write' access to repository contents
+            pull-requests: write      # 'write' access to pull requests
+        with:
+            chart-path: charts/private-vectordb
+    lint-test-charts:
+        uses: ./.github/workflows/lint-test-charts.yaml
+        needs: [bump-chart-version]
+    
+    # Populate data container jobs
+    build-populate-example-data-container:
+        runs-on: ubuntu-latest
+        needs: [filter-changes]
+        if: ${{ needs.filter-changes.outputs.populate-example-data-container-changed == 'true' }}
+        steps:
+            - name: hello-step
+              run: echo "populate-example-data-container changed!"
+
+    # Search vectors container jobs
+    build-search-vectors-container:
+        runs-on: ubuntu-latest
+        needs: [filter-changes]
+        if: ${{ needs.filter-changes.outputs.search-vectors-container-changed == 'true' }}
+        steps:
+            - name: hello-step
+              run: echo "search-vectors-container changed!"

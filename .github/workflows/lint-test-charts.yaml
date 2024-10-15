@@ -1,6 +1,6 @@
 name: Lint and Test Charts
 
-on: push
+on: workflow_call
 
 jobs:
   lint-test:
