@@ -43,5 +43,3 @@ storage:
         driveSize: 10Gi
         volumeMode: Block
         accessMode: ReadWriteOnce
-    # - name: set2
-    #   count: 5
