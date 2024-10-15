@@ -46,7 +46,7 @@ jobs:
 
       - name: Test kubectl
         run: |
-          kubectl get all --all-namespaces
+          kubectl cluster-info --context kind-chart-testing
 
       - name: Run chart-testing (install)
         if: steps.list-changed.outputs.changed == 'true'
