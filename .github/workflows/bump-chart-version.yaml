@@ -22,7 +22,7 @@ jobs:
         - name: Get Previous Version Hash
           id: get_hash
           run: |
-            COMMIT_HASH=$(git cherry -v main ${{ github.head_ref || github.ref_name }} | grep "chore(release): chart:" | head -n 1 | awk '{print $2}')
+            COMMIT_HASH=$(git cherry -v main HEAD | grep "chore(release): chart:" | tail -n 1 | awk '{print $2}')
             echo "::set-output name=hash::$COMMIT_HASH"
         - name: Remove Previous Version Hash
           if: ${{ steps.get_hash.outputs.hash != '' }}
