@@ -1,0 +1,13 @@
+name: Pull Request to Main
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+        branches: github.event.repository.default_branch
+
+  
+jobs:
+    my-job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: my-step
+          run: echo "Hello World!"
