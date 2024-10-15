@@ -58,9 +58,19 @@ jobs:
               run: echo "search-vectors-container changed!"
 
     # Final check
-    check-success:
+    final-check:
         runs-on: ubuntu-latest
-        needs: [filter-changes, lint-test-charts, build-populate-example-data-container, build-search-vectors-container]
+        needs: [filter-changes, bump-chart-version, lint-test-charts, build-populate-example-data-container, build-search-vectors-container]  # It depends on all jobs
         steps:
-            - name: print-success
-              run: echo "All jobs completed successfully!"
+        - name: Check previous job statuses
+          run: |
+            if [ "${{ needs.filter-changes.result }}" == "failure" ] || \
+                [ "${{ needs.bump-chart-version.result }}" == "failure" ] || \
+                [ "${{ needs.lint-test-charts.result }}" == "failure" ] || \
+                [ "${{ needs.build-populate-example-data-container.result }}" == "failure" ] || \
+                [ "${{ needs.build-search-vectors-container.result }}" == "failure" ]; then
+                echo "One or more jobs have failed."
+                exit 1
+            else
+                echo "All jobs succeeded or were skipped."
+            fi
