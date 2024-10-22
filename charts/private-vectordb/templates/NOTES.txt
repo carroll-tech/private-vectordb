@@ -1,16 +1,1 @@
-Welcome to your installation of Private VectorDB; a fully self-contained instance of a vector database for airgapped installations.
-{{- if .Values.storage.toolbox.enabled }}
 
-Ceph Toolbox has been enabled!
-
-To connect to the Ceph Toolbox pod, please follow the below instructions:
-1. Check the status with:
-  kubectl --namespace {{ .Release.Namespace }} rollout status deploy/{{ include "chart.fullname" . }}-storage-toolbox
-2. Once pod is running, you can connect to it with:
-  kubectl --namespace {{ .Release.Namespace }} exec -it deploy/{{ include "chart.fullname" . }}-storage-toolbox -- bash
-{{- end }}
-3. All available Ceph command line tools are available. Try running:
-  ceph status
-  ceph osd status
-  ceph df
-  rados df
