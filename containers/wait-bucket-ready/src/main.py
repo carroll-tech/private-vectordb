@@ -3,11 +3,18 @@ import os
 import time
 from dotenv import load_dotenv
 
+def load_kubernetes_config():
+    try:
+        config.load_incluster_config()
+    except Exception as e:
+        print("Exception while loading kubeconfig: %s\n" % e)
+        print("Exiting...")
+        exit(1)
+
 def main():
     load_dotenv()
     
-    # Configs can be set in Configuration class directly or using helper utility
-    config.load_kube_config()
+    load_kubernetes_config()
     
     group = 'objectbucket.io'
     version = 'v1alpha1'
