@@ -1,0 +1,24 @@
+# Base image
+FROM python:3.12 AS build
+
+RUN apt-get update && apt-get install -y build-essential curl
+ENV VIRTUAL_ENV=/opt/venv \
+    PATH="/opt/venv/bin:$PATH"
+
+ADD https://astral.sh/uv/install.sh /install.sh
+RUN chmod -R 655 /install.sh && /install.sh && rm /install.sh
+COPY ./requirements.txt .
+RUN /root/.cargo/bin/uv venv /opt/venv && \
+    /root/.cargo/bin/uv pip install --no-cache -r requirements.txt
+
+# App image
+FROM python:3.12-slim-bookworm AS app
+COPY --from=build /opt/venv /opt/venv
+ADD src/main.py .
+
+# Activate the virtualenv in the container
+# See here for more information:
+# https://pythonspeed.com/articles/multi-stage-docker-python/
+ENV PATH="/opt/venv/bin:$PATH"
+
+ENTRYPOINT ["python", "./main.py"]

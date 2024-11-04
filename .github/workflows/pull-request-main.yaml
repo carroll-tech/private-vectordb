@@ -12,6 +12,7 @@ jobs:
             private-vectordb-chart-changed: ${{ steps.changes.outputs.private-vectordb-chart }}
             populate-example-data-container-changed: ${{ steps.changes.outputs.populate-example-data-container }}
             search-vectors-container-changed: ${{ steps.changes.outputs.search-vectors-container }}
+            wait-bucket-ready-container-changed: ${{ steps.changes.outputs.wait-bucket-ready-container }}
         steps:
             - uses: actions/checkout@v4
             - uses: dorny/paths-filter@v3
@@ -24,6 +25,8 @@ jobs:
                         - 'containers/populate-example-data/**'
                     search-vectors-container:
                         - 'containers/search-vectors/**'
+                    wait-bucket-ready-container:
+                        - 'containers/wait-bucket-ready/**'
 
     # Chart jobs
     
@@ -45,6 +48,15 @@ jobs:
         steps:
             - name: hello-step
               run: echo "search-vectors-container changed!"
+
+    # Wait bucket ready container jobs
+    build-wait-bucket-ready-container:
+        needs: [filter-changes]
+        if: ${{ needs.filter-changes.outputs.wait-bucket-ready-container-changed == 'true' }}
+        uses: "./.github/workflows/build-image.yaml"
+        with:
+            image: "wait-bucket-ready"
+            path: "./containers/wait-bucket-ready"
 
     # Final check
     final-check:
