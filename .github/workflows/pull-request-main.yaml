@@ -60,7 +60,7 @@ jobs:
         if: ${{ needs.filter-changes.outputs.wait-bucket-ready-container-changed == 'true' }}
         uses: "./.github/workflows/build-image.yaml"
         with:
-            image: "wait-bucket-ready"
+            image: "wait-bucket-ready:latest"
             path: "./containers/wait-bucket-ready"
 
     # Final check
