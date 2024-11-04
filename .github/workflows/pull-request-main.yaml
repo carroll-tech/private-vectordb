@@ -12,6 +12,7 @@ jobs:
             private-vectordb-chart-changed: ${{ steps.changes.outputs.private-vectordb-chart }}
             populate-example-data-container-changed: ${{ steps.changes.outputs.populate-example-data-container }}
             search-vectors-container-changed: ${{ steps.changes.outputs.search-vectors-container }}
+            wait-bucket-ready-container-changed: ${{ steps.changes.outputs.wait-bucket-ready-container }}
         steps:
             - uses: actions/checkout@v4
             - uses: dorny/paths-filter@v3
@@ -24,6 +25,8 @@ jobs:
                         - 'containers/populate-example-data/**'
                     search-vectors-container:
                         - 'containers/search-vectors/**'
+                    wait-bucket-ready-container:
+                        - 'containers/wait-bucket-ready/**'
 
     # Chart jobs
     
@@ -46,17 +49,32 @@ jobs:
             - name: hello-step
               run: echo "search-vectors-container changed!"
 
+    # Wait bucket ready container jobs
+    build-wait-bucket-ready-container:
+        permissions:
+            contents: read
+            packages: write
+            attestations: write
+            id-token: write
+        needs: [filter-changes]
+        if: ${{ needs.filter-changes.outputs.wait-bucket-ready-container-changed == 'true' }}
+        uses: "./.github/workflows/build-image.yaml"
+        with:
+            image: "wait-bucket-ready"
+            path: "./containers/wait-bucket-ready"
+
     # Final check
     final-check:
         runs-on: ubuntu-latest
-        needs: [filter-changes, build-populate-example-data-container, build-search-vectors-container]  # It depends on all jobs
+        needs: [filter-changes, build-populate-example-data-container, build-search-vectors-container, build-wait-bucket-ready-container]  # It depends on all jobs
         if: always()
         steps:
         - name: Check previous job statuses
           run: |
             if [ "${{ needs.filter-changes.result }}" == "failure" ] || \
                 [ "${{ needs.build-populate-example-data-container.result }}" == "failure" ] || \
-                [ "${{ needs.build-search-vectors-container.result }}" == "failure" ]; then
+                [ "${{ needs.build-search-vectors-container.result }}" == "failure" ] || \
+                [ "${{ needs.build-wait-bucket-ready-container.result }}" == "failure" ]; then
                 echo "One or more jobs have failed."
                 exit 1
             else

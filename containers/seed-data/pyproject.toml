@@ -1,0 +1,7 @@
+[project]
+name = "private-vectordb-seed-data"
+version = "0.1.0"
+description = "Seeds data into the datastore of the private vectordb"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
