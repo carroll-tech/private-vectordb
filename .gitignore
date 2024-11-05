@@ -38,3 +38,6 @@ Session.vim
 chart/**/*.tgz
 
 .history
+
+# Lance data
+**/*.lance/**
