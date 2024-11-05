@@ -41,3 +41,6 @@ chart/**/*.tgz
 
 # Lance data
 **/*.lance/**
+
+# Env files
+.env
