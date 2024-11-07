@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         outputs:
             private-vectordb-chart-changed: ${{ steps.changes.outputs.private-vectordb-chart }}
-            populate-example-data-container-changed: ${{ steps.changes.outputs.populate-example-data-container }}
+            seed-data-container-changed: ${{ steps.changes.outputs.seed-data-container }}
             search-vectors-container-changed: ${{ steps.changes.outputs.search-vectors-container }}
             wait-bucket-ready-container-changed: ${{ steps.changes.outputs.wait-bucket-ready-container }}
         steps:
@@ -21,8 +21,8 @@ jobs:
                 filters: |
                     private-vectordb-chart:
                         - 'charts/private-vectordb/**'
-                    populate-example-data-container:
-                        - 'containers/populate-example-data/**'
+                    seed-data-container:
+                        - 'containers/seed-data/**'
                     search-vectors-container:
                         - 'containers/search-vectors/**'
                     wait-bucket-ready-container:
@@ -32,13 +32,18 @@ jobs:
     
     
     # Populate data container jobs
-    build-populate-example-data-container:
-        runs-on: ubuntu-latest
+    build-seed-data-container:
+        permissions:
+            contents: read
+            packages: write
+            attestations: write
+            id-token: write
         needs: [filter-changes]
-        if: ${{ needs.filter-changes.outputs.populate-example-data-container-changed == 'true' }}
-        steps:
-            - name: hello-step
-              run: echo "populate-example-data-container changed!"
+        if: ${{ needs.filter-changes.outputs.seed-data-container-changed == 'true' }}
+        uses: "./.github/workflows/build-image.yaml"
+        with:
+            image: "seed-data"
+            path: "./containers/seed-data"
 
     # Search vectors container jobs
     build-search-vectors-container:
@@ -66,13 +71,13 @@ jobs:
     # Final check
     final-check:
         runs-on: ubuntu-latest
-        needs: [filter-changes, build-populate-example-data-container, build-search-vectors-container, build-wait-bucket-ready-container]  # It depends on all jobs
+        needs: [filter-changes, build-seed-data-container, build-search-vectors-container, build-wait-bucket-ready-container]  # It depends on all jobs
         if: always()
         steps:
         - name: Check previous job statuses
           run: |
             if [ "${{ needs.filter-changes.result }}" == "failure" ] || \
-                [ "${{ needs.build-populate-example-data-container.result }}" == "failure" ] || \
+                [ "${{ needs.build-seed-data-container.result }}" == "failure" ] || \
                 [ "${{ needs.build-search-vectors-container.result }}" == "failure" ] || \
                 [ "${{ needs.build-wait-bucket-ready-container.result }}" == "failure" ]; then
                 echo "One or more jobs have failed."
