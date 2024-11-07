@@ -1,4 +1,8 @@
-# Private VectorDB
+# 🚧 Private VectorDB - Work in Progress 🚧
+
+> **⚠️ Warning: This project is currently under development and is not functional yet.**
+
+Please check back later for updates! 🛠️
 
 ## Description
 This project is targeted for those who want to completely self-host a vector database on a kubernetes cluster, either on a cloud hosted provider, on your own kubernetes cluster, or locally on your machine. The only requirement is a kubernetes cluster. All data is stored on the cluster, and no traffic leaves the cluster during vector retrival. This is ideal for scenarios in which data is considered sensitive and thus has access restrictions.
@@ -29,4 +33,4 @@ chmod +x install-prerequisites.sh
 
 
 ## Thank You
-Thank you to Restack for their tutorial, [Lancedb Lambda On Aws](https://www.restack.io/p/lancedb-answer-lambda-aws-cat-ai), which served as a useful guide during development.
+Thank you to LanceDB for their tutorial, [Serverless LanceDB](https://lancedb.com/gallery/serverless-lancedb-with-s3-and-lambda), which served as a useful guide during development.
