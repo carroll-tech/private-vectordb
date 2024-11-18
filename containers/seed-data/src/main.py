@@ -106,7 +106,7 @@ def main():
     db = asyncio.run(get_lancedb_client(bucket_name, bucket_access_key, bucket_secret_access_key, bucket_endpoint))
     
     # Create table
-    table = asyncio.run(create_table(db, "test_table_1", df))
+    table = asyncio.run(create_table(db, os.getenv("SEED_TABLE_NAME", "test-table"), df))
     
     # Query table
     print(asyncio.run(table.query().limit(5).to_arrow()))
