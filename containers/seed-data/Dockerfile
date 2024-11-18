@@ -1,3 +1,4 @@
+# Base image
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm AS build
 
 ENV VIRTUAL_ENV=/opt/venv \

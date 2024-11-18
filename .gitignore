@@ -39,6 +39,12 @@ chart/**/*.tgz
 
 .history
 
+# Lance data
+**/*.lance/**
+
+# Env files
+.env
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
