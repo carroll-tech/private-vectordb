@@ -17,4 +17,4 @@ ADD src/main.py .
 # https://pythonspeed.com/articles/multi-stage-docker-python/
 ENV PATH="/opt/venv/bin:$PATH"
 
-ENTRYPOINT ["python", "./main.py"]
+ENTRYPOINT ["/opt/venv/bin/python", "./main.py"]
